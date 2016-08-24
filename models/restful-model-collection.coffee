@@ -133,4 +133,6 @@ class RestfulModelCollection
       models = jsonArray.map (json) =>
         new @modelClass(@connection, json)
       Promise.resolve(models)
+    .catch () =>
+      Promise.resolve([])
 
