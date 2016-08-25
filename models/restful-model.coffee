@@ -34,7 +34,7 @@ class RestfulModel
 
   toJSON: ->
     json = {}
-    json[attr.jsonKey] = attr.toJSON(@[key]) for key, attr of @attributes()
+    json[attr.modelKey] = attr.toJSON(@[key]) for key, attr of @attributes()
     json['object'] = @constructor.name.toLowerCase()
     json
 
