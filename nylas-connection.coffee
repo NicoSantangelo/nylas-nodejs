@@ -48,6 +48,7 @@ class NylasConnection
     options.body ?= {} unless options.formData
     options.json ?= true
     options.downloadRequest ?= false
+    options.timeout ?= 30 * 1000
 
     # For convenience, If `expanded` param is provided, convert to view:
     # 'expanded' api option
