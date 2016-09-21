@@ -45,12 +45,12 @@ class AttributeCollection extends Attribute
     @itemClass = itemClass
     @
 
-  toJSON: (vals) ->
+  toJSON: (vals, __toJS) ->
     return [] unless vals
     json = []
     for val in vals
       if val.toJSON?
-        json.push(val.toJSON())
+        json.push(val.toJSON(__toJS))
       else
         json.push(val)
     json

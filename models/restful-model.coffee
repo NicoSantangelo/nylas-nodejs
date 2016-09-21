@@ -32,11 +32,14 @@ class RestfulModel
       @[key] = attr.fromJSON(json[attr.jsonKey], @) unless json[attr.jsonKey] is undefined
     @
 
-  toJSON: ->
+  toJS: ->
+    this.toJSON(true)
+
+  toJSON: (__toJS) ->
     json = {}
     for key, attr of @attributes()
       value = attr.toJSON(@[key])
-      json[attr.modelKey] = value unless value is undefined
+      json[attr.modelKey if __toJS else attr.jsonKey] = value unless value is undefined
     json['object'] = @constructor.name.toLowerCase()
     json
 

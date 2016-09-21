@@ -16,9 +16,12 @@ class Draft extends Message
         modelKey: 'replyToMessageId'
         jsonKey: 'reply_to_message_id'
 
-  toJSON: ->
+  toJSON: (__toJS) ->
     json = super
-    json.file_ids = @fileIds()
+    if __toJS
+      json.fileIds = @fileIds()
+    else
+      json.file_ids = @fileIds()
     json.object = 'draft' if @draft
     json
 
