@@ -96,7 +96,7 @@ class RestfulModelCollection
       params = {}
     @connection.request
       method: 'DELETE'
-      qs: params
+      body: params
       path: "#{@path()}/#{id}"
     .then ->
       callback(null) if callback
